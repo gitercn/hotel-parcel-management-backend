@@ -1,0 +1,338 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Api Documentation",
+        "version": "1.0",
+        "title": "Api Documentation",
+        "termsOfService": "urn:tos",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "guest-controller",
+            "description": "Guest Controller"
+        },
+        {
+            "name": "parcel-controller",
+            "description": "Parcel Controller"
+        }
+    ],
+    "paths": {
+        "/api/guests/check-in": {
+            "post": {
+                "tags": [
+                    "guest-controller"
+                ],
+                "summary": "checkInGuest",
+                "operationId": "checkInGuestUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "guest",
+                        "description": "guest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Guest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/guests/check-out/{id}": {
+            "post": {
+                "tags": [
+                    "guest-controller"
+                ],
+                "summary": "checkOutGuest",
+                "operationId": "checkOutGuestUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/guests/checked-in": {
+            "get": {
+                "tags": [
+                    "guest-controller"
+                ],
+                "summary": "listCheckedInGuests",
+                "operationId": "listCheckedInGuestsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/parcels/guest/{guestId}": {
+            "get": {
+                "tags": [
+                    "parcel-controller"
+                ],
+                "summary": "listParcelsForGuest",
+                "operationId": "listParcelsForGuestUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "guestId",
+                        "in": "path",
+                        "description": "guestId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/parcels/pickup/{id}": {
+            "post": {
+                "tags": [
+                    "parcel-controller"
+                ],
+                "summary": "pickUpParcel",
+                "operationId": "pickUpParcelUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/parcels/register": {
+            "post": {
+                "tags": [
+                    "parcel-controller"
+                ],
+                "summary": "registerParcel",
+                "operationId": "registerParcelUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "parcel",
+                        "description": "parcel",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Parcel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Guest": {
+            "type": "object",
+            "properties": {
+                "checkIn": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "checkOut": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "checkedIn": {
+                    "type": "boolean"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "roomNumber": {
+                    "type": "string"
+                }
+            },
+            "title": "Guest"
+        },
+        "Parcel": {
+            "type": "object",
+            "properties": {
+                "guest": {
+                    "$ref": "#/definitions/Guest"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "parcelNumber": {
+                    "type": "string"
+                },
+                "pickedUp": {
+                    "type": "boolean"
+                },
+                "receptionistComment": {
+                    "type": "string"
+                }
+            },
+            "title": "Parcel"
+        }
+    }
+}
